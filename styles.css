@@ -533,18 +533,21 @@ body {
 .process-card {
   background: #2563eb;
   color: #fff;
-  border-radius: 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 32px 38px 28px 38px;
-  min-height: 180px;
-  box-shadow: 0 4px 24px rgba(35,35,64,0.10);
-  position: relative;
-  transition: box-shadow 0.2s, transform 0.2s;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(35,35,64,0.1);
+  flex: 1;
+  min-width: 280px;
   opacity: 0;
-  transform: translateY(40px);
-  animation: processFadeInUp 0.7s cubic-bezier(.4,1.4,.6,1) forwards;
+  transform: translateY(20px);
+  animation: processFadeInUp 0.6s ease forwards;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+.process-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px rgba(35,35,64,0.2);
+  border: 2px solid #fff;
 }
 .process-card__top {
   display: flex;
@@ -601,7 +604,7 @@ body {
 @keyframes processFadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -1072,5 +1075,205 @@ body {
   }
   .footer-bottom p {
     font-size: 0.75rem;
+  }
+}
+
+/* Service Card Learn More Button */
+.learn-more-btn {
+  background-color: #2d2d2d;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.learn-more-btn:hover {
+  background-color: #444;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 50px auto;
+  padding: 30px;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 10px;
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-modal {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+  color: #000;
+}
+
+.modal h2 {
+  color: #2d2d2d;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.modal-body {
+  color: #444;
+}
+
+.modal-body h3 {
+  color: #2d2d2d;
+  margin: 20px 0 15px;
+  font-size: 20px;
+}
+
+.modal-body h4 {
+  color: #2d2d2d;
+  margin: 25px 0 15px;
+  font-size: 18px;
+}
+
+.modal-body p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.modal-body ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.modal-body li {
+  margin: 10px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.modal-body li:before {
+  content: "•";
+  color: #2d2d2d;
+  position: absolute;
+  left: 0;
+}
+
+/* Make modal scrollable on mobile */
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 20px;
+    padding: 20px;
+    width: auto;
+  }
+}
+
+/* Custom Service Card Styles */
+.custom-service-card {
+  background: linear-gradient(145deg, #3a86ff, #2563eb);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-service-card h3,
+.custom-service-card p {
+  color: white;
+}
+
+.custom-service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.2);
+}
+
+.custom-card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: white;
+  color: #3a86ff;
+  text-decoration: none;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 120px;
+  font-size: 0.9rem;
+}
+
+.contact-btn i {
+  font-size: 1.2em;
+}
+
+.whatsapp-btn {
+  background-color: #25D366;
+  color: white;
+}
+
+.whatsapp-btn:hover {
+  background-color: #22c35e;
+}
+
+.message-btn {
+  background-color: white;
+  color: #3a86ff;
+}
+
+.message-btn:hover {
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 600px) {
+  .custom-card-buttons {
+    gap: 8px;
+  }
+  
+  .contact-btn {
+    width: 110px;
+  }
+}
+
+@media (max-width: 380px) {
+  .contact-btn {
+    width: 100px;
   }
 } 

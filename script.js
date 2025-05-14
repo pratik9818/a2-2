@@ -78,4 +78,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', handleStatsBar);
     handleStatsBar(); // Check on page load
+
+    // Modal functionality
+    // Get all buttons with learn-more-btn class
+    const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+    
+    // Add click event listener to each button
+    learnMoreButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            }
+        });
+    });
+
+    // Get all close buttons
+    const closeButtons = document.querySelectorAll('.close-modal');
+    
+    // Add click event listener to each close button
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+        });
+    });
+
+    // Close modal when clicking outside of modal content
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    });
+
+    // Close modal on escape key press
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            const openModals = document.querySelectorAll('.modal[style="display: block;"]');
+            openModals.forEach(modal => {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        }
+    });
 }); 
